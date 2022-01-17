@@ -10,7 +10,13 @@ use App\Models\Content;
 class ContentController extends Controller
 {
     //
+    /*
+        I probably would not have structured the actual applicaiton
+        in this manner. Because this is such a simple application duplication
+        would have been ok.  This was basically an illustration of a possible
+        way to handle responses
 
+    */
 
 
 
@@ -38,55 +44,11 @@ class ContentController extends Controller
     {
         $content = Content::find($id);
 
-        //$response = json_encode($content);
-        if(! $content){ $content = []; }else{ $content =[$content];}
+        // prepare result for response
+        $content = $content ? [$content] : [];
 
         return $this->respond($content);
     }
-
-    private function respond($data)
-    {
-
-        // If there is an array, proceeed with
-        // returning a positive result
-        if(sizeof($data)>0){
-            $payload = $this->success($data);
-        }else{
-            $payload = $this->fail('Result not found');
-        }
-
-        //encode response
-        $response = json_encode($payload);
-
-        return response($response,200)
-                ->withHeaders(  [
-                    'Content-Type' => 'application/json',
-                    'Charset' => 'utf-8'
-                    ]);
-    }
-
-    /**
-     * Returns array for successful api response
-     *
-     * @param array $data
-     * @return array
-     */
-    private function success($data)
-    {
-        return ['success'=> 'true', 'data' => $data];
-    }
-
-    /**
-     * Returns array for failed api usage
-     *
-     * @param array $data
-     * @return array
-     */
-    private function fail($message)
-    {
-        return ['success'=> 'false', 'data' => $message];
-    }
-
 
     /**
      * Save record, using Request for time sake
@@ -109,11 +71,7 @@ class ContentController extends Controller
 
         $newContent = Content::create($new);
 
-        $route = Route('content.show', $newContent['id']);
-
-        return redirect($route);
-
-
+        return redirect(Route('content.show', $newContent['id']));
 
     }
 

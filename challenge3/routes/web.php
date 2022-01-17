@@ -17,13 +17,34 @@ use App\Http\Controllers\ContactController;
 */
 
 Route::get('/', function () {
-    return view('content.form');
+    return view('welcome');
 
 });
 
 
-Route::get('/content', [ContentController::class, 'index'])->name('content.all');
+Route::prefix('/content')->group(function () {
 
-Route::get('/content/{id}', [ContentController::class, 'show'])->name('content.show');
+    Route::get('/new', function(){ return view('content.form'); } )->name('content.create');
 
-Route::post('/content', [ContentController::class, 'store'])->name('content.post');
+    Route::get('/', [ContentController::class, 'index'])->name('content.all');
+
+    Route::get('/{id}', [ContentController::class, 'show'])->name('content.show');
+
+    Route::post('/', [ContentController::class, 'store'])->name('content.post');
+
+});
+
+Route::prefix('/contact')->group(function () {
+
+    Route::get('/new', function(){ return view('contact.form'); } )->name('contact.create');
+
+    Route::get('/', [ContactController::class, 'index'])->name('contact.all');
+
+    Route::get('/{id}', [ContactController::class, 'show'])->name('contact.show');
+
+    Route::post('/', [ContactController::class, 'store'])->name('contact.post');
+
+});
+
+
+
