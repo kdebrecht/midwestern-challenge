@@ -4,12 +4,15 @@ import Link from 'next/link'
 import React from 'react'
 import Card from '/components/Card.js'
 import Heading from '/components/Heading.js' 
+import Header from '/components/Header.js'
+
 
 export default function Home() {
   
 
   const [testResults, setTestResults] = React.useState([])
 
+ 
   
   function jsTest(){
    
@@ -66,7 +69,8 @@ export default function Home() {
       
       </Head>
 
-      <header className="mainHeader">
+      
+      {/** <header className="mainHeader">
 
         <img src="/images/Logo.png" className="logo" alt="Logo"  />
         
@@ -75,6 +79,10 @@ export default function Home() {
         </Link>
       
       </header>
+      **/}
+     
+
+      <Header  links={[{href:'/contact',title:'contact'}]}  />
       
       <main className="main">
         

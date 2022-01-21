@@ -1,15 +1,22 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Heading from '/components/Heading.js'
+import Header from '/components/Header.js'
 import React from 'react'
+import ContactForm from '../components/ContactForm'
 
 
 export default function Contact() {
 
-    
+  
+
+  if(typeof document != 'undefined'){
+    document.querySelector('body').classList.add('styleBackGround');
+  }
+
   return(
 
-    <div  >
+    <div className="styleBackground" >
 
       <Head>
         <title>Midwestern: Embedding Success </title>
@@ -20,27 +27,21 @@ export default function Contact() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet" /> 
+      
+         
+
+
       </Head>
 
-      <header className="  contactHeader ">
+      <Header  links={[{href:'/',title:'home'}]}  />
 
-        <div class="mainHeader">
-          <img src="/images/Logo.png" class="logo" alt="Logo"  />
-
-          <Link href="/">
-            <a className="headerLink" >home</a>
-          </Link>
-
-
-        </div>
-        
-      </header>
 
       <main className="mainContact">
       
-        <div  >
+        <div class="contactLeft" >
           <Heading />
-          <div style={{width:473}}>
+
+          <div  >
             
             <p >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do dos eiusmod tempor incididunt ut labore et trace dolore magna aliqua.
@@ -51,11 +52,14 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="whiteBox">
-            <span    >
-              this is a work in progress.   
-            </span> 
-        </div>
+        <section className="contactFormContainer">
+          
+          <div >
+
+            <ContactForm />
+          </div>
+            
+        </section>
 
       </main>
 
@@ -66,3 +70,5 @@ export default function Contact() {
   
 
 }
+
+
