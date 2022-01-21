@@ -13,6 +13,10 @@ export default function Home() {
   const [testResults, setTestResults] = React.useState([])
 
  
+  if(typeof document != 'undefined'){
+    document.querySelector('body').classList.remove('styleBackGround');
+  }
+
   
   function jsTest(){
    

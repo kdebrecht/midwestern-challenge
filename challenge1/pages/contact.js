@@ -16,7 +16,7 @@ export default function Contact() {
 
   return(
 
-    <div className="styleBackground" >
+    <div className="" >
 
       <Head>
         <title>Midwestern: Embedding Success </title>
