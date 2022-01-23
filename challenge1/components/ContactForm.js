@@ -10,6 +10,8 @@ export default function ContactForm(props){
     function submitContactForm(event){
       event.preventDefault();
         
+
+
         const headers = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -61,7 +63,7 @@ export default function ContactForm(props){
                         required
                         onChange={inputChange}  />
                 
-                    <span className="hidden">Required</span>
+                    <span className="hidden validationMessage">Required</span>
                 
                 </label>
 
@@ -75,7 +77,7 @@ export default function ContactForm(props){
                         onChange={inputChange} 
                         />
                 
-                    <span className="hidden">Required</span>
+                    <span className="hidden validationMessage">Required</span>
 
                 </label>
 
@@ -88,7 +90,7 @@ export default function ContactForm(props){
                         value={contact.title} 
                         onChange={inputChange}  />
 
-                    <span className="hidden">Required</span>
+                    <span className="hidden validationMessage">Required</span>
                 
                 </label>
                 
@@ -98,17 +100,18 @@ export default function ContactForm(props){
                     <input placeholder='Email' 
                         name="email" 
                         type="email" 
+                        id="email"
                         required
                         className="contactForm--formInput"
                         value={contact.email} 
                         onBlur={inputBlur}
                         onChange={inputChange}  />
-                    <span className="hidden">Required</span>
+                    <span className="hidden validationMessage">Required</span>
                 
                 </label>
                
                 <div className="border">
-                    <textarea role="textbox" name="message" className="contactForm--formTextArea" onChange={inputChange} >
+                    <textarea role="textbox" name="message" placeholder="Message" className="contactForm--formTextArea" onChange={inputChange} >
                         {contact.message}
                     </textarea>
                 </div>
