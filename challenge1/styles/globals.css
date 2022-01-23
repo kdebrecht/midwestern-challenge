@@ -32,6 +32,8 @@ input:focus, textarea:focus{
 
   }
 
+   
+
   .section{
     margin-top: 60px;
     padding: 0px;
@@ -87,11 +89,14 @@ a {
       it looked better when resizing down */
   
   /* justify-content: space-around ; */
-  justify-content: space-between ;
-  
-  flex-basis: 33%;
+  justify-content: center;
+  column-gap: 26px;
+   
   margin-top: 5px;
 }
+
+
+
 
 .mainHeader{
   display:flex;
